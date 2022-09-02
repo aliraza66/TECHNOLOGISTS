@@ -1,70 +1,25 @@
-import React, { useRef, useState } from "react";
-import { Button, DrawerLayoutAndroid, Text, StyleSheet, View } from "react-native";
+import React from "react";
+import { Text,TextInput,Button } from "@react-native-material/core";
+import { ScrollView,TouchableOpacity } from "react-native";
 
-const App = () => {
-  const drawer = useRef(null);
-  
-  const [drawerPosition, setDrawerPosition] = useState("left");
-  const changeDrawerPosition = () => {
-    if (drawerPosition === "left") {
-      setDrawerPosition("right");
-    } else {
-      setDrawerPosition("left");
-    }
-  };
-
-  const navigationView = () => (
-    <View style={[styles.container, styles.navigationContainer]}>
-      <Text style={styles.paragraph}>I'm in the Drawer!</Text>
-      <Button
-        title="Close drawer"
-        onPress={() => drawer.current.closeDrawer()}
-      />
-    </View>
-  );
-
-  return (
-    <DrawerLayoutAndroid
-      ref={drawer}
-      drawerWidth={300}
-      drawerPosition={drawerPosition}
-      renderNavigationView={navigationView}
-    >
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>
-          Drawer on the {drawerPosition}!
-        </Text>
-        <Button
-          title="Change Drawer Position"
-          onPress={() => changeDrawerPosition()}
-        />
-        <Text style={styles.paragraph}>
-          Swipe from the side or press button below to see it!
-        </Text>
-        <Button
-          title="Open drawer"
-          onPress={() => drawer.current.openDrawer()}
-        />
-      </View>
-    </DrawerLayoutAndroid>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16
-  },
-  navigationContainer: {
-    backgroundColor: "#ecf0f1"
-  },
-  paragraph: {
-    padding: 16,
-    fontSize: 15,
-    textAlign: "center"
-  }
-});
+const App = () => (
+  <ScrollView>
+  <Text variant="h4" style={{  
+    backgroundColor:'red',justifyContent:'center',textAlign:"center",height:100,textAlignVertical:'center' }}>
+    Member Ship Form
+  </Text>
+   <TextInput label="Full Name" style={{ margin: 16 }} />
+   <TextInput label="Age" style={{ margin: 16 }} />
+   <TextInput label="Gender" style={{ margin: 16 }} />
+   <TextInput label="City/District" style={{ margin: 16 }} />
+   <TextInput label="Phone No." style={{ margin: 16 }} />
+   <TextInput label="email id" style={{ margin: 16 }} />
+   <TextInput label="Blood Group" style={{ margin: 16 }} />
+   <TextInput label="Will you donate blood?" style={{ margin: 16 }} />
+   <TextInput label="Your last blood donation date?" style={{ margin: 16 }} />
+   <TextInput label="Profession" style={{ margin: 16 }} />
+   <Button title="Submit" style={{margin:20}}/>
+   </ScrollView>
+);
 
 export default App;
